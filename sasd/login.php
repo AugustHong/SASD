@@ -5,7 +5,7 @@
   require_once 'db.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="utf-8">
   <!--套用助教給的bootstrap樣板-->
   <head>
     <meta charset="utf-8">
@@ -20,21 +20,33 @@
     <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
     <script src="../bower_components/respond/dest/respond.min.js"></script>
     <![endif]-->
-    <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-23019901-1']);
-    _gaq.push(['_setDomainName', "bootswatch.com"]);
-    _gaq.push(['_setAllowLinker', true]);
-    _gaq.push(['_trackPageview']);
-    (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
   </head>
   <body>
-    <!--連結有上層功能列表的檔案-->
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!--左上角的圖示(試過width用%，發現版面會跑掉)-->
+      <a class="navbar-brand" href="home_data.html" target = "myframe"><img src="img\head_pic.png" style="width:80px"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!--上層功能列表-->
+      <ul class="nav navbar-nav">
+        <li class=""><a href="home_data.html" target="myframe">首頁 <span class="sr-only">(current)</span></a></li>
+        <?php
+        echo "<li class=''><a href='text.php?name=".""."' target='myframe'>電影總覽<span class='sr-only'></span></a></li>";
+        ?>
+        <li><a href="member.php" target="myframe">關於我們</a></li>
+      </ul>
+      <ul class='nav navbar-nav navbar-right'>";
+        <li><a href='login.php' target='_self'>登入</a></li>
+      </ul>
+
+      <ul class='nav navbar-nav navbar-right'>
+        <li><a href='register.php' target='_self'>註冊</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
     
     <!--內容的程式碼打在這裡-->
     <div class="row">
@@ -58,8 +70,8 @@
               
               <div class="form-group">
                 <div class="col-lg-9 col-lg-offset-3">
-                  <button type="reset" class="btn btn-default">Cancel</button>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-default">清除</button>
+                  <button type="submit" class="btn btn-primary">送出</button>
                 </div>
               </div>
             </fieldset>
@@ -120,8 +132,7 @@
         //紀錄登入者的id，之後若要隨時取得使用者資料時，可以透過 $_SESSION['login_user_id'] 取用
         $_SESSION['login_user_id'] = $member['MemberID'];
         $_SESSION['login_account'] = $member['MemberAccount'];
-        echo "<script>alert('登入成功！');</script>";
-        echo '<meta http-equiv=REFRESH CONTENT=1;url=index.php>';
+        echo "<script>alert('登入成功'); location.href = 'index.php';</script>";
       }
     }
     else

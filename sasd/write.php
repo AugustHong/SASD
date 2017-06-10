@@ -7,7 +7,7 @@
             if ($conn->connect_error){  //看是否可以連線（$conn->connect_error是連線失敗的錯誤訊息）
                     die("connection Error:".$conn->connect_error);  //die會顯示文字，且其後的程式不執行
                 }
-            mysqli_set_charset($conn, "utf-8");
+            mysqli_set_charset($conn, "utf8");
 
             $sql = "SELECT * FROM movie where MovieID = '$id' ;";
 
@@ -33,8 +33,8 @@
         <br>
         <br>
         <center>
-        <form action="article_insert.php" method="post">
-        <?php echo "<label style = 'color:white'>".$name."</label>"; ?><br>
+        <form action="artical_insert.php" method="post">
+        <?php echo "<label style = 'color:white;font-size:24pt'>".$name."</label>"; ?><br>
         <input type = "text"style = "display:none" name="movie_id" value = <?php echo $id; ?>>
         <label style = "color:white">文章標題:</label><input type="text" name="title"><br><p>
         <label style = "color:white">劇透度（1最小，5最大）: </label><input type="number" name="quantity" min="1" max="5" step="1" value="1"><br><p>    

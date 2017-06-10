@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 
 <head>
-    <title>電影名稱之文章列表</title>
+    <title>文章內容</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--隨網站而變大變小-->
 
@@ -21,7 +21,7 @@
 
     <br>
     <br>
-    <div class="container1" style="font-weight: bold">
+    <div class="container1" style="font-weight: bold; width:1000px">
                 <?php
                    
                     $conn = new mysqli('localhost', 'root', '', 'filmcritic');
@@ -30,15 +30,15 @@
                         die("connection Error:".$conn->connect_error);  //die會顯示文字，且其後的程式不執行
                     }
 
-                    mysqli_set_charset($conn, 'utf-8');
+                    mysqli_set_charset($conn, 'utf8');
 
                     $sql = "SELECT * FROM artical where ArticalID = '$id' ;";
                     
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
-                    echo "<h1>".$row['ArticalTitle']."</h1>";
+                    echo "<h1 style='font-size:40pt'>".$row['ArticalTitle']."</h1>";
                     echo "<br><br>" ;
-                    echo "<h3>".$row['artical_content']."</h3>";
+                    echo "<h4>".$row['artical_content']."</h4>";
                     $movie_id = $row['MovieID'];
                     }
                     $conn->close();
@@ -46,7 +46,7 @@
         </div>
         <br>
         <br>
-        <?php echo "<a href='movie_text.php?id=".$movie_id."'>回上頁</a>"; ?>
+        <?php echo "<a href='movie_text.php?id=".$movie_id."' style ='font-size:28pt'>回上頁</a>"; ?>
 </body>
 
 </html>

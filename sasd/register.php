@@ -34,6 +34,31 @@
     </script>
   </head>
   <body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!--左上角的圖示(試過width用%，發現版面會跑掉)-->
+      <a class="navbar-brand" href="home_data.html" target = "myframe"><img src="img\head_pic.png" style="width:80px"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!--上層功能列表-->
+      <ul class="nav navbar-nav">
+        <li class=""><a href="home_data.html" target="myframe">首頁 <span class="sr-only">(current)</span></a></li>
+        <?php
+        echo "<li class=''><a href='text.php?name=".""."' target='myframe'>電影總覽<span class='sr-only'></span></a></li>";
+        ?>
+        <li><a href="member.php" target="myframe">關於我們</a></li>
+      </ul>
+      <ul class='nav navbar-nav navbar-right'>";
+        <li><a href='login.php' target='_self'>登入</a></li>
+      </ul>
+
+      <ul class='nav navbar-nav navbar-right'>
+        <li><a href='register.php' target='_self'>註冊</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
     <!--連結有上層功能列表的檔案-->
     
     <div class="row">
@@ -93,7 +118,7 @@
         echo "<script>alert('註冊成功！');</script>";
 
       $new_id = mysqli_insert_id($_SESSION['link']);
-      echo '<meta http-equiv=REFRESH CONTENT=1;url=login.php>';
+      echo "<script>location.href = 'index.php';</script>";
       //echo "執行成功，新增後的 id 為 {$new_id}";
       }
       elseif(mysqli_affected_rows($_SESSION['link']) == 0)

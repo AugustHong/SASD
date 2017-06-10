@@ -12,7 +12,7 @@
         function rand(){
             var r = parseInt(Math.random()*3+1);
             document.getElementById('demo').innerHTML = r;
-            document.getElementById('myImage').src = "img" + "\\" + "pic" + document.getElementById('demo').innerHTML + ".jpg";
+            document.getElementById('myImage').src = "img" + "\\" + document.getElementById('demo').innerHTML + ".jpg";
         }
 
         function change() {
@@ -21,7 +21,7 @@
             } else {
                 document.getElementById('demo').innerHTML = parseInt(document.getElementById('demo').innerHTML) - 1;
             }
-            document.getElementById('myImage').src = "img" + "\\" + "pic" + document.getElementById('demo').innerHTML + ".jpg";
+            document.getElementById('myImage').src = "img" + "\\" + document.getElementById('demo').innerHTML + ".jpg";
         }
 
         function change_add() {
@@ -30,19 +30,16 @@
             } else {
                 document.getElementById('demo').innerHTML = parseInt(document.getElementById('demo').innerHTML) + 1;
             }
-            document.getElementById('myImage').src = "img" + "\\" + "pic" + document.getElementById('demo').innerHTML + ".jpg";
+            document.getElementById('myImage').src = "img" + "\\" +document.getElementById('demo').innerHTML + ".jpg";
         }
     </script>
     <center>
         <table>
             <tr>
-
-
-                <br></br>
                 <p style="font-weight: bold;font-family: fantasy ; font-size:50px ; color:red ">即將上映</p>
 
                 <td><img src="img\arrow1.png" onclick="change()"></td>
-                <td><img src="img\pic1.jpg" id="myImage" style="width:400px"></td>
+                <td><img src="img\pic1.jpg" id="myImage"></td>
                 <td><img src="img\arrow.png" onclick="change_add()"></td>
             </tr>
         </table>

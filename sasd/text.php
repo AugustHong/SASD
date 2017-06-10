@@ -2,7 +2,7 @@
     $name = $_GET['name'];
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="utf-8">
   <!--套用助教給的bootstrap樣板-->
   <head>
     <meta charset="utf-8">
@@ -55,14 +55,14 @@
                     if ($conn->connect_error){  //看是否可以連線（$conn->connect_error是連線失敗的錯誤訊息）
                         die("connection Error:".$conn->connect_error);  //die會顯示文字，且其後的程式不執行
                     }
-                    mysqli_set_charset($conn, 'utf-8');
+                    mysqli_set_charset($conn, 'utf8');
 
                     if($name == ""){$sql = "SELECT * FROM movie; ";}
                     else{$sql = "SELECT * FROM movie where movie = '$name' ;";}
                     
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
-                    echo "<a class='list-group-item' href='movie_text.php?id=".$row['MovieID']."' style='background-color:#93FF93' target = '_self'>".$row['Movie']."</a>";
+                    echo "<a class='list-group-item' href='movie_text.php?id=".$row['MovieID']."' style='background-color:#93FF93;font-size:24pt' target = '_self'>".$row['Movie']."</a>";
                     }
 
                     $conn->close();

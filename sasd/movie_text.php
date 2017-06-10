@@ -1,4 +1,12 @@
 <?php
+  session_start();
+  if (!isset($_SESSION['login_user_id'])){$_SESSION['login_user_id'] = 0;}  
+  //session_destroy();
+  //載入db.php，就可以連資料庫
+  require_once 'db.php';
+?>
+
+<?php
     $id = $_GET['id'];
 
     $conn = new mysqli('localhost', 'root', '', 'filmcritic');
@@ -8,7 +16,7 @@
                         die("connection Error:".$conn->connect_error);  //die會顯示文字，且其後的程式不執行
                     }
 
-		    mysqli_set_charset($conn, 'utf-8');
+		    mysqli_set_charset($conn, 'utf8');
                     $sql = "SELECT * FROM movie where MovieID = '$id' ;";
 
                     $result = $conn->query($sql);
@@ -36,26 +44,23 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	</head>
 	<body>
-	<br>
-
+    <?php 
+        if($_SESSION['login_user_id']>0){
+            echo "<center><br><a href='write.php?id=".$id."' target='_self' style='width:30% ;font-size:30px;font-weight: bold; margin-left:100px'>我要寫文章</a></br></center>"; 
+        }
+        ?>
 	<table>
         <tr>
             <hr>
             <!--<td><img src = "img/movie_text_pic.jpg" style = "width:80%"></td>-->
           <?php
-	    echo "<td><img src = 'img/".$id.".jpg' style = 'width:40%; margin-left:100px'></td>";
-            echo "<td style='width:30% ;font-size:30px;font-weight: bold'>".$info."</td>";
+	        echo "<td><img src = 'img/".$id.".jpg' style = 'width:50%; margin-left:100px'></td>";
+            echo "<td style='width:50%;font-size:30px;font-weight: bold'>".$info."</td>";
           ?>
-        </tr>
-        <tr>
-            <td>
-                <?php echo "<br><a href='write.php?id=".$id."' target='_self' style='width:30% ;font-size:30px;font-weight: bold; margin-left:100px'>我要寫文章</a></br>"; ?>
-            </td>
         </tr>
     </table>
 
 <hr>
-<br>
 <center>
 <h1 style="color:blue; font-size:200% ;font-weight: bold">文章列表</h1>
  	<div class="container1" style="font-weight: bold">
@@ -65,7 +70,7 @@
                 
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
-                    echo "<a class='list-group-item' href='artical_text.php?id=".$row['ArticalID']."' style='background-color:#93FF93' target = '_self'>".$row['ArticalTitle']."</a>";
+                    echo "<a class='list-group-item' href='artical_text.php?id=".$row['ArticalID']."' style='background-color:#93FF93;font-size:24pt' target = '_self'>".$row['ArticalTitle']."</a>";
                     }
 
                     $conn->close();

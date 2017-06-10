@@ -42,7 +42,7 @@ require_once 'db.php';
         <qa class="abc" style="font-size:300%"> 關於我們 </qa>
         <a class="oblique" style="font-size:150%">MOVIE NIGHT</a>
         <hr>
-        <h2 style="font-size:230%;color:slategrey">It's nice to meet you!</h2>;
+        <h2 style="font-size:230%;color:slategrey">It's nice to meet you!</h2>
         <p class="italic ">我們是一群來自台灣科技大學的學生,在系統分析這堂課上相識。<br>我們熱愛電影，但對於喜愛分享電影一切美好的你，我們更愛。<br>希望透過這個平台讓大家有交流電影心得的機會!</p>
         <br>
         <qa class="abc" style="font-size:230%;color:slategrey"> 為什麼要"MOVIE NIGHT" </qa><br><br><br>
